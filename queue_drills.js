@@ -1,3 +1,5 @@
+'use strict';
+
 class _Node{
   constructor(value){
     this.value=value;
@@ -42,9 +44,30 @@ class Queue{
 
 }
 
+function peek(que) {
+  return que.first.value;
+}
+
+function display(que) {
+  let tempNode = que.first;
+  let stringQue = '';
+
+  while (tempNode) {
+    stringQue += tempNode.value + '...';
+    tempNode = tempNode.previous;
+  }
+
+  return stringQue;
+}
+
 const ourQueue = new Queue();
 ourQueue.enqueue(1);
 ourQueue.enqueue(2);
 ourQueue.enqueue(3);
-console.log(ourQueue.dequeue());
-console.log(ourQueue);
+// console.log(ourQueue.dequeue());
+// console.log(ourQueue);
+console.log(display(ourQueue))
+
+
+
+
