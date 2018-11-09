@@ -165,6 +165,12 @@ function matchParenthesis(expression) {
   return true;
 }
 
+// function sortStack(stack){
+//////////////////Need to come back to this
+// }
+
+
+
 console.log(matchParenthesis('5 + (4*2 + 7*(4 + 23) - 7/(43-42+23(23*76 + 5)'));
 
 // const stack = new Stack();
