@@ -30,7 +30,7 @@ class Stack {
     //Reassign this.top to node.next (which is the item below the current node)
     //return node
     if (this.top===null){
-      return null;
+      throw new Error('The stack is empty');
     }
     const node = this.top;
     this.top = node.next;
@@ -127,23 +127,60 @@ function is_palindrome(str) {
   return true;
 }
 
+function matchParenthesis(expression) {
+  //input: 5 + (4*2 + 7*(4 + 23) - 7/(43-42+23(23*76 + 5)))
+  //  stack: 5 + (4*2 + 7*(4 + 23) - 7/(43-42+23(23*76 + 5)))
+  //output: true
 
+  //input: 5 + (4*2 + 7*(4 + 23) - 7/(43-42+23(23*76 + 5)
+  //  stack: (()(()
+  //output: false
+  // ())(
+  // countL: 1   countR: 2    if countR > countL, wrong
+  // count: -1   if count < 0, wrong
+  // stack: true...empty...if error, return error
+  // stack: push when seeing (, pop when seeing )
 
+  const newStack = new Stack();
 
+  for(let i=0; i<expression.length; i++) {
+    if (expression[i] === '(') {
+      newStack.push(i);
+      console.log(display(newStack))
+    } else if (expression[i] === ')') {
+      try {
+        newStack.pop();
+        console.log(display(newStack))
+      } catch(error) {
+        console.log('The thing is an error')
+        return i;
+      }
+    }
+  }
 
-const stack = new Stack();
-stack.push(5);
-stack.push(4);
-stack.push(3);
-// console.log(stack.pop());
-// console.log(peek(stack))
-console.log(is_palindrome('hello'));
-console.log(is_palindrome('A man, a plan, a canal: Panama'));
-console.log(is_palindrome('Tauhida'));
-console.log(is_palindrome('1001'));
+  if (newStack.top) {
+    return newStack.top.data;
+  }
+
+  return true;
+}
+
+console.log(matchParenthesis('5 + (4*2 + 7*(4 + 23) - 7/(43-42+23(23*76 + 5)'));
+
+// const stack = new Stack();
+// stack.push(5);
+// stack.push(4);
+// stack.push(3);
+// // console.log(stack.pop());
+// // console.log(peek(stack))
+// console.log(is_palindrome('hello'));
+// console.log(is_palindrome('A man, a plan, a canal: Panama'));
+// console.log(is_palindrome('Tauhida'));
+// console.log(is_palindrome('1001'));
 // console.log(display(reverseStack(stack)));
 // display(stack)
 // console.log(stack);
+
 
 
 
