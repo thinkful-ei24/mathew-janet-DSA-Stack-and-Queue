@@ -75,14 +75,61 @@ function display(stack) {
   return outputString;
 }
 
+function reverseStack(stack){
+  const newStack = new Stack();
+  let outputString = '';
+  let tempPosition = stack.top;
+
+
+  while (tempPosition) {
+    // push tempPosition.data into newStack
+    // save stack.next into tempPosition
+    newStack.push(tempPosition.data);
+    tempPosition = tempPosition.next;
+  }
+
+  return newStack;
+
+}
+
+function is_palindrome(str) {
+  str = str.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
+  // your code goes here
+  //convert string into a stack 'strStack'
+  //call the function that reverses the stack
+  //create a new stack that is the 'string' stack reversed 'strRevStack'
+  //create a variable call tempPosition1 = strStack.top
+  //create another cariable called tempPositionRev = strRevStack.top
+  //loop through 1 stack and check to see if tempPosition1.data is equal to tempPositionRev.data
+  //if there are not, break the loop and return false
+  //if they are equal, reassign both positions to their next value (ex tempPositionRev.next)
+
+  const strStack = new Stack();
+  const strStackRev = new Stack();
+
+  for(let i = 0; i<str.length; i++){
+    strStack.push(str[i]);
+  }
+
+
+
+}
+
+
+
+
+
 const stack = new Stack();
 stack.push(5);
 stack.push(4);
 stack.push(3);
 // console.log(stack.pop());
 // console.log(peek(stack))
-console.log(display(stack))
+console.log(display(stack));
+console.log(display(reverseStack(stack)));
 // display(stack)
 // console.log(stack);
+
+
 
 
