@@ -38,16 +38,20 @@ class Stack {
 
 class QueueStack{
   constructor(){
-    this.top = null;
+    this.leftStack = new Stack();
+    this.rightStack = new Stack();
   }
 
   enqueue(value){
+    //push to left stack like regular stack
     const node = new _Node(value, this.top);
     this.top = node;
   }
 
   _reverse() {
     const stackRev = new QueueStack;
+    //if right stack is empty, pop everything off left stack into right stack
+    
     //To Reverse: 
     //    pop current stack
     //    push StackRev
@@ -56,18 +60,13 @@ class QueueStack{
     // console.log(stackRev.top)
   }
 
-  dequeue(){
-    // Reverse current stack and store in StackRev
-    // To Reverse: 
-    //    pop current stack
-    //    push StackRev
-    //    stackRev is done
-    // Pop top off = Popvalue
-    // Reverse StackRev and store in this.QueueStack
-    // return value
-    this._reverse();
+  peek() {
+    // reverseleftStack into rightStack
+    
+  }
 
-    //return node.value;
+  dequeue(){
+    // reverseStack which return rightStack.pop
   }
 
 }
